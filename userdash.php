@@ -122,7 +122,116 @@ include 'header.php';
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <style>
+/* Custom Code for Buttons animation and color Start */
+* {
+    font-family: "Inter", "Roboto", "Open Sans", sans-serif !important;
+}
+
+
+.userdash:hover {
+    letter-spacing: 1px !important;
+    transition: 0.9s !important;
+    color: white !important;
+    /* text-transform: uppercase !important;     */
+}
+
+.card-dash:hover {
+     transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+}
+
+
+/* .card-dash-top-text:hover {
+    color: black !important;
+    letter-spacing: 2px !important;
+    transition: 0.9s !important;
+} */
+
+.card-dash-text:hover {
+    color: black !important;
+    letter-spacing: 2px !important;  
+
+}
+
+.btn-dash {
+    background-color: #2FBF71 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    color:white !important;
+    font-size: 1rem !important;      
+}
+
+.btn-dash:hover {
+    /* background-color:  #27A862 !important;
+    border-color: #27A862 !important;
+    box-shadow:0px 0px 2px 2px #2FBF71;
+    /* transition: 0.9s; */
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    
+}
+
+.btn-success:hover {
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+}
+
+input {
+    border:none !important; 
+}
+
+.badge-dash {
+    
+    border-radius: 10px !important;
+    border: none !important;
+    color:black !important;    
+    font-weight: bolder;
+    font-size: 1rem;
+    padding: 6px 6px 6px 6px;
+}
+
+.heading-dash {
+    background-color: #27A862 !important;
+    color: white !important;
+    border-radius: 4px !important;
+}
+
+
+.heading-dash:hover {
+    transition: 0.9s !important;
+    font-weight: 700 !important;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+    letter-spacing: 3px;
+
+}
+/* delete.php */
+
+.delete-card {
+    background-color: #2FBF71 !important;
+    align-items: center !important;
+    color: white !important;
+    
+}
+
+.delete-card:hover{
+    letter-spacing: 1px !important;
+    transition: 0.9s !important;
+}
+
+/* Custom Code for buttons and animation End */
+
     body { background: linear-gradient(135deg, #f0f7f4 0%, #e6f3ed 100%); font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
     .navbar-custom { background: linear-gradient(135deg, #198754, #20c997); color: white; }
     .dashboard-card {
@@ -144,7 +253,7 @@ include 'header.php';
 
 <nav class="navbar navbar-expand-lg navbar-custom shadow-sm mb-4">
     <div class="container-fluid">
-        <span class="navbar-text fs-5 fw-bold">
+        <span class="userdash navbar-text fs-5 fw-bold">
             User Dashboard — 
             <?php if ($is_full_access): ?>
                 <span class="court-badge">ALL COURTS ACCESS</span>
@@ -159,48 +268,58 @@ include 'header.php';
 <div class="container">
     <!-- Action Buttons -->
     <div class="row g-3 mb-4">
-        <div class="col-md-3"><a href="addrecord.php" class="btn btn-success btn-lg w-100 btn-action">Add Record</a></div>
-        <div class="col-md-3"><a href="editrecord.php" class="btn btn-warning btn-lg w-100 btn-action">Edit Records</a></div>
-        <div class="col-md-3"><a href="search.php" class="btn btn-primary btn-lg w-100 btn-action">Search Records</a></div>
-        <div class="col-md-3"><a href="upload_existing_document.php" class="btn btn-info btn-lg w-100 btn-action">Upload Document</a></div>
+
+        <div class="col-md-3"><a href="addrecord.php" class="btn w-100 btn-dash ">Add Record</a>
+        </div>
+
+        <div class="col-md-3"><a href="editrecord.php" class="btn w-100 btn-dash">Edit Records</a>
+        </div>
+
+        <div class="col-md-3"><a href="search.php" class="btn w-100 btn-dash">Search Records</a>
+        </div>
+
+        <div class="col-md-3"><a href="upload_existing_document.php" class="btn w-100 btn-dash">Upload Document</a></div>
     </div>
 
     <!-- Dashboard Cards -->
     <div class="row g-4 mb-5">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <a href="view_cases.php?status=all" class="text-decoration-none">
-                <div class="dashboard-card">
-                    <h4>Total Records</h4>
-                    <p><?= number_format($total_records) ?></p>
+                <div class="dashboard-card card-dash card-dash-text ">
+                    <h4 class="">Total Records</h4>
+                    <p class="card-dash-text"><?= number_format($total_records) ?></p>
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <a href="view_cases.php" class="text-decoration-none">
-                <div class="dashboard-card">
-                    <h4>Uploaded Documents</h4>
-                    <p><?= number_format($docs_count) ?></p>
+                <div class="dashboard-card card-dash card-dash-text">
+                    <h4 class="">Uploaded Documents</h4>
+                    <p class="card-dash-text"><?= number_format($docs_count) ?></p>
                 </div>
             </a>
         </div>
         <?php foreach ($status_data as $s): ?>
-        <div class="col-md-3">
-            <a href="view_cases.php?status=<?= urlencode($s['status']) ?>" class="text-decoration-none">
-                <div class="dashboard-card">
+        <div class="col-md-4">
+            <a href="view_cases.php?status=<?= urlencode($s['status']) ?>" class="text-decoration-none ">
+                <div class="dashboard-card card-dash">
                     <h4><?= htmlspecialchars($s['status']) ?></h4>
-                    <p><?= number_format($s['count']) ?></p>
+                    <p class="card-dash-text"><?= number_format($s['count']) ?></p>
                 </div>
             </a>
         </div>
         <?php endforeach; ?>
     </div>
 
+
+<!-- Quick Upload Commented Start -->
+
     <div class="row">
         <!-- Quick Upload -->
-        <div class="col-lg-6 mb-4">
+        <!-- <div class="col-lg-12 mb-5">
             <div class="card shadow-lg">
                 <div class="card-header text-center">
-                    <h5 class="mb-0">Quick Upload to Existing Case</h5>
+                    <h5 class="w-100 mb-0 heading-dash ">Quick Upload to Existing Case</h5>
                 </div>
                 <div class="card-body">
                     <form id="uploadForm" action="upload_document.php" method="POST" enctype="multipart/form-data">
@@ -225,14 +344,18 @@ include 'header.php';
                         <div class="progress mb-3" style="height: 30px; display:none;">
                             <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%">0%</div>
                         </div>
-                        <button type="submit" class="btn btn-success btn-lg w-100">Upload Document</button>
+                        <button type="submit" class="btn btn-dash w-100">Upload Document</button>
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <!-- Quick Document Upload End -->
+
+<!-- Commented Recent Documents On Userdash Start -->
 
         <!-- Recent Documents -->
-        <div class="col-lg-6 mb-4">
+        <!-- <div class="col-lg-6 mb-4">
             <div class="card shadow-lg">
                 <div class="card-header text-center">
                     <h5 class="mb-0">
@@ -267,10 +390,16 @@ include 'header.php';
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+
+    <!-- Recent Document End -->
+
+<!-- Commented the  Chart Start -->
 
     <!-- Chart -->
-    <div class="card shadow-lg mb-5">
+
+    <!-- <div class="card shadow-lg mb-5">
         <div class="card-header text-center">
             <h5 class="mb-0">
                 Case Status Overview 
@@ -281,7 +410,10 @@ include 'header.php';
             <canvas id="statusChart" height="120"></canvas>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<!-- Chart End -->
 
 <!-- Modals -->
 <div class="modal fade" id="previewModal" tabindex="-1"><div class="modal-dialog modal-xl"><div class="modal-content"><div class="modal-body text-center" id="previewContent"></div></div></div></div>

@@ -27,14 +27,17 @@ $redirect_page = ($user['role'] === 'admin') ? 'admindash.php' : 'userdash.php';
 // Get filter
 $status_filter = $_GET['status'] ?? 'all';
 
+// Determine full access
+$is_full_access = ($user['role'] === 'admin' || strtoupper(trim($user['courtname'])) === 'ALL');
+
 // === COURT FILTER LOGIC ===
-// Admin → sees all courts
+// Admin or 'ALL' → sees all courts
 // Regular user → sees only their court
 $court_condition = '';
 $params = [];
 $types = '';
 
-if ($user['role'] !== 'admin' && !empty($user['courtname'])) {
+if (!$is_full_access && !empty($user['courtname'])) {
     $court_condition = " WHERE courtname = ?";
     $params[] = $user['courtname'];
     $types .= 's';
@@ -62,8 +65,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 $title = ($status_filter === 'all') 
-    ? "Your Court Records" 
-    : "Your Court — " . htmlspecialchars(ucfirst($status_filter));
+    ? ($is_full_access ? "All Court Records" : "Your Court Records") 
+    : ($is_full_access ? "All Courts — " : "Your Court — ") . htmlspecialchars(ucfirst($status_filter));
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +144,7 @@ $title = ($status_filter === 'all')
     <!-- Header -->
     <div class="page-header text-center">
         <h1 class="display-5 fw-bold mb-3"><?= $title ?></h1>
-        <?php if ($user['role'] !== 'admin'): ?>
+        <?php if ($user['role'] !== 'admin' && !$is_full_access): ?>
             <div class="court-name d-inline-block">
                 Court: <strong><?= htmlspecialchars($user['courtname'] ?: 'Not Assigned') ?></strong>
             </div>

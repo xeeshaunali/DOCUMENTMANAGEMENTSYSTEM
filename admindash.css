@@ -45,9 +45,10 @@ input {
 }
 
 .heading-dash {
-    background-color: #27A862 !important;
+    background-color: #27A862 !important; 
     color: white !important;
     border-radius: 4px !important;
+    /* background-color: white !important; */
 }
 
 

@@ -32,6 +32,10 @@ $dashboard = in_array($_SESSION['role'] ?? '', $validRoles) && $_SESSION['role']
 
 
     <style>
+        * {          
+          
+            box-sizing: border-box !important;
+        }
         .navbar-custom {
             background: linear-gradient(90deg, #198754, #28a745) !important;
             box-shadow: 0 4px 10px rgba(0,0,0,0.20);
@@ -63,7 +67,7 @@ $dashboard = in_array($_SESSION['role'] ?? '', $validRoles) && $_SESSION['role']
   <div class="container-fluid px-4">
 
     <a class="navbar-brand" href="<?php echo $dashboard; ?>">
-        District & Sessions Court Malir Karachi
+         District & Sessions Court Malir Karachi
         <small>Digital Record Management System</small>
     </a>
 
