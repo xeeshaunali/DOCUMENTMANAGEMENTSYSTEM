@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2025 at 06:10 AM
+-- Generation Time: Dec 15, 2025 at 06:22 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `southrecord`
+-- Database: `xee`
 --
 
 -- --------------------------------------------------------
@@ -253,16 +253,7 @@ CREATE TABLE IF NOT EXISTS `case_documents` (
   `created_court` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `case_id` (`case_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `case_documents`
---
-
-INSERT INTO `case_documents` (`id`, `case_id`, `type_id`, `file_name`, `file_path`, `uploaded_by`, `courtname`, `uploaded_at`, `qc_status`, `confidentiality`, `created_user`, `created_court`) VALUES
-(58, 1808, 1, '0000_Judgment_v1.pdf', 'uploads/DJ-MALIR/0000/0000_Judgment_v1.pdf', 'admin', 'DJ-MALIR', '2025-11-11 04:41:48', 'Pending', 'Non-Restricted', NULL, NULL),
-(59, 1808, 3, '0000_Decree_v1.pdf', 'uploads/DJ-MALIR/0000/0000_Decree_v1.pdf', 'admin', 'Main Court', '2025-11-20 05:50:11', 'Pending', 'Non-Restricted', NULL, NULL),
-(60, 1808, 43, '0000_Deporsition_of_Witnesses_v1.pdf', 'uploads/DJ-MALIR/0000/0000_Deporsition_of_Witnesses_v1.pdf', 'admin', 'Main Court', '2025-11-20 05:55:02', 'Pending', 'Non-Restricted', NULL, NULL);
+) ENGINE=MyISAM AUTO_INCREMENT=494 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -297,15 +288,17 @@ CREATE TABLE IF NOT EXISTS `courts` (
   `court_code` varchar(50) NOT NULL,
   `court_fullname` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `courts`
 --
 
 INSERT INTO `courts` (`id`, `court_code`, `court_fullname`) VALUES
-(23, 'ADJ-I', 'Additional District & Sessions Court, Malir, Karachi'),
-(22, 'DJ-MALIR', 'District & Sessions Court, Malir, Karachi');
+(32, 'DJ-MALIR', 'District & Sessions Court Malir, Karachi'),
+(34, 'ADJ-I-MALIR', 'Additional District & Sessions Court-I Malir, Karachi'),
+(35, 'ADJ-II-MALIR', 'Additional District & Sessions Court-II Malir, Karachi'),
+(36, 'ADJ-III-MALIR', 'Additional District & Sessions Court-III Malir, Karachi');
 
 -- --------------------------------------------------------
 
@@ -344,15 +337,11 @@ CREATE TABLE IF NOT EXISTS `ctccc` (
   `created_by` varchar(100) DEFAULT NULL,
   `created_court` varchar(100) DEFAULT NULL,
   `ocr_complete` enum('Yes','No') DEFAULT 'No',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1809 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ctccc`
---
-
-INSERT INTO `ctccc` (`id`, `underSection`, `courtname`, `casecateg`, `caseno`, `year`, `partyone`, `partytwo`, `crimeno`, `crimeyear`, `s_rbf`, `dateInst`, `dateSubmission`, `dateDisp`, `status`, `cost`, `remarks`, `ps`, `row`, `shelf`, `bundle`, `file`, `cfms_dc_casecode`, `last_updated`, `qc_status`, `confidentiality`, `created_by`, `created_court`, `ocr_complete`) VALUES
-(1808, NULL, 'DJ-MALIR', '13-A Arms Ordinance', 1, '2025', 'The State', 'Shushhsuh', NULL, NULL, NULL, NULL, NULL, NULL, 'Disposed', NULL, 'Test Case for Pin', NULL, NULL, NULL, NULL, NULL, '0000', '2025-11-11 04:41:48', 'Approved', 'Restricted', 'admin', 'Main Court', 'Yes');
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `deleted_by` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_deleted` (`deleted_at`)
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -374,15 +363,7 @@ CREATE TABLE IF NOT EXISTS `document_access_logs` (
   KEY `user_id` (`user_id`),
   KEY `action` (`action`),
   KEY `accessed_at` (`accessed_at`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `document_access_logs`
---
-
-INSERT INTO `document_access_logs` (`id`, `doc_id`, `user_id`, `action`, `accessed_at`, `ip_address`, `user_agent`) VALUES
-(3, 60, 1, 'view', '2025-11-20 05:58:38', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'),
-(4, 60, 1, 'view', '2025-11-20 06:07:31', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0');
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -401,30 +382,6 @@ CREATE TABLE IF NOT EXISTS `document_metadata` (
   KEY `document_id` (`document_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `document_metadata`
---
-
-INSERT INTO `document_metadata` (`id`, `document_id`, `meta_key`, `meta_value`, `created_at`) VALUES
-(1, 29, 'Case Code', '1111111111', '2025-10-31 11:14:46'),
-(2, 29, 'Case Title', '1 vs 1', '2025-10-31 11:14:46'),
-(3, 29, 'Case Type', 'Civil', '2025-10-31 11:14:46'),
-(4, 29, 'Year', '1', '2025-10-31 11:14:46'),
-(5, 29, 'Document Category', 'Judgment', '2025-10-31 11:14:46'),
-(6, 29, 'OCR Status', 'Completed', '2025-10-31 11:14:46'),
-(7, 29, 'Operator', 'admin', '2025-10-31 11:14:46'),
-(8, 29, 'Confidentiality', 'Restricted', '2025-10-31 11:14:46'),
-(9, 29, 'QC Status', 'Pending', '2025-10-31 11:14:46'),
-(10, 30, 'Case Code', '1111111111', '2025-10-31 11:24:44'),
-(11, 30, 'Case Title', '1 vs 1', '2025-10-31 11:24:44'),
-(12, 30, 'Case Type', 'Civil', '2025-10-31 11:24:44'),
-(13, 30, 'Year', '1', '2025-10-31 11:24:44'),
-(14, 30, 'Document Category', 'Judgment', '2025-10-31 11:24:44'),
-(15, 30, 'OCR Status', 'Completed', '2025-10-31 11:24:44'),
-(16, 30, 'Operator', 'admin', '2025-10-31 11:24:44'),
-(17, 30, 'Confidentiality', 'Restricted', '2025-10-31 11:24:44'),
-(18, 30, 'QC Status', 'Pending', '2025-10-31 11:24:44');
-
 -- --------------------------------------------------------
 
 --
@@ -437,25 +394,15 @@ CREATE TABLE IF NOT EXISTS `document_types` (
   `type_name` varchar(150) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `document_types`
 --
 
 INSERT INTO `document_types` (`id`, `type_name`, `created_at`) VALUES
-(1, 'Judgment', '2025-10-30 08:08:14'),
-(2, 'Order', '2025-10-30 08:08:50'),
-(3, 'Decree', '2025-10-30 08:46:00'),
-(39, 'Farming of Charge', '2025-11-07 05:56:16'),
-(29, 'Evidence', '2025-11-03 11:51:31'),
-(28, 'Plaint', '2025-11-03 11:51:18'),
-(40, 'Plea of Accused', '2025-11-07 05:56:26'),
-(38, 'Framing of issues', '2025-11-07 05:56:04'),
-(41, 'Preliminary Decree', '2025-11-07 05:58:50'),
-(42, 'Case Dairies', '2025-11-07 05:59:08'),
-(43, 'Deporsition of Witnesses', '2025-11-07 05:59:19'),
-(45, 'Statement of Accused', '2025-11-07 05:59:37');
+(55, 'Judgment', '2025-12-15 05:57:17'),
+(56, 'Order', '2025-12-15 05:57:23');
 
 -- --------------------------------------------------------
 
@@ -469,37 +416,6 @@ CREATE TABLE IF NOT EXISTS `policestations` (
   `ps_name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `policestations`
---
-
-INSERT INTO `policestations` (`id`, `ps_name`) VALUES
-(1, 'All'),
-(2, 'TBK'),
-(3, 'Sehwan'),
-(4, 'Jamshoro'),
-(5, 'Kotri'),
-(6, 'Excise & ANF'),
-(7, 'Coal Mines'),
-(8, 'Looni Kot'),
-(9, 'Railway'),
-(10, 'Nooriabad'),
-(11, 'Manjhand'),
-(12, 'Khanoth'),
-(13, 'Chachar'),
-(14, 'Budhapur'),
-(15, 'Rajri'),
-(16, 'Thebat'),
-(17, 'Mahi Otho'),
-(18, 'Naing Shareef'),
-(19, 'Amri'),
-(20, 'Khero Dero'),
-(21, 'Jhangara'),
-(22, 'Bhan Saeedabad'),
-(23, 'Other PS'),
-(24, 'Nill'),
-(25, 'NILLL');
 
 -- --------------------------------------------------------
 
@@ -517,14 +433,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pin` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `courtname`, `pin`) VALUES
-(1, 'admin', 'admin', 'admin', 'Main Court', '$2y$10$UzpJ2G0g2B6Q.ve3P/MvcOViWcBj/ehDRpaCP6HCaeV0SThn3BJDO');
+(1, 'admin', 'IT@110', 'admin', 'Main Court', '$2y$10$cDS8MNkph2s0IYdvVXEWpu2fp5N9tET3JZ8aNW7CT924i/Qb7rd06'),
+(32, 'malir', '123456', 'user', 'ALL', '$2y$10$biDDZydK86G/woXR686/duxUYLeqHQqgOfHwKlK.4sZio9RaZUQd6');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

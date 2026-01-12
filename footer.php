@@ -13,8 +13,8 @@
 
 <div class="footer fixed-bottom" >
     <div class="container-footer" style="margin-top:32px important;">
-        <div class="text-success text-center">
-            <h6>© Xee || Designed and Developed by IT Department || Distict & Sessions Court Jamshoro</h6>            
+        <div class="text-success text-center ">
+            <h6> || Designed and Developed by IT Department || Distict & Sessions Court Malir Karachi ||</h6>            
         </div>
     </div>
 </div>

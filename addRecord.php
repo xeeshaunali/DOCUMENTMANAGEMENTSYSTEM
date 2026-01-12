@@ -180,6 +180,39 @@ include 'header.php';
 
 <style>
 label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0.1rem; }
+
+* {
+    font-family: "Inter", "Roboto", "Open Sans", sans-serif !important;
+
+}
+.btn-dash {
+    background-color: #2FBF71 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    color:white !important;
+    font-size: 1rem !important;      
+}
+
+.btn-dash:hover {
+    /* background-color:  #27A862 !important;
+    border-color: #27A862 !important;
+    box-shadow:0px 0px 2px 2px #2FBF71;
+    /* transition: 0.9s; */
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    
+}
+
+.btn-success:hover {
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+}
+
 </style>
 
 <div class="container-fluid">
@@ -269,8 +302,8 @@ label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0
                     <input type="file" name="document" class="form-control text-center shadow rounded" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx">
                 </div>
 
-                <div class="col-12 text-center mt-5">
-                    <button type="submit" class="btn btn-success btn-lg w-50">Save Record & Upload File</button>
+                <div class="col-12 text-center mt-2 mb-1">
+                    <button type="submit" class="btn btn-dash  w-50">Save Record & Upload File</button>
                 </div>
             </form>
         </div>

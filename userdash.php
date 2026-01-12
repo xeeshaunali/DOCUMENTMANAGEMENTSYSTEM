@@ -197,7 +197,7 @@ include 'header.php';
 
     <div class="row">
         <!-- Quick Upload -->
-        <div class="col-lg-12 mb-4">
+        <div class="col-lg-6 mb-4">
             <div class="card shadow-lg">
                 <div class="card-header text-center">
                     <h5 class="mb-0">Quick Upload to Existing Case</h5>
@@ -232,7 +232,7 @@ include 'header.php';
         </div>
 
         <!-- Recent Documents -->
-        <!-- <div class="col-lg-6 mb-4">
+        <div class="col-lg-6 mb-4">
             <div class="card shadow-lg">
                 <div class="card-header text-center">
                     <h5 class="mb-0">
@@ -267,10 +267,10 @@ include 'header.php';
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Chart -->
-    <!-- <div class="card shadow-lg mb-5">
+    <div class="card shadow-lg mb-5">
         <div class="card-header text-center">
             <h5 class="mb-0">
                 Case Status Overview 
@@ -280,7 +280,7 @@ include 'header.php';
         <div class="card-body">
             <canvas id="statusChart" height="120"></canvas>
         </div>
-    </div> -->
+    </div>
 </div>
 
 <!-- Modals -->

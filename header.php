@@ -20,7 +20,7 @@ $dashboard = in_array($_SESSION['role'] ?? '', $validRoles) && $_SESSION['role']
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMS | District & Sessions Court Jamshoro</title>
+    <title>DMS | District & Sessions Court Malir Karachi</title>
 
     <link rel="stylesheet" href="../css/bootstrap.css">
     <!-- CSS -->
@@ -63,7 +63,7 @@ $dashboard = in_array($_SESSION['role'] ?? '', $validRoles) && $_SESSION['role']
   <div class="container-fluid px-4">
 
     <a class="navbar-brand" href="<?php echo $dashboard; ?>">
-        District & Sessions Court Jamshoro
+        District & Sessions Court Malir Karachi
         <small>Digital Record Management System</small>
     </a>
 

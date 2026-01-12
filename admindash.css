@@ -1,0 +1,75 @@
+* {
+    font-family: "Inter", "Roboto", "Open Sans", sans-serif !important;
+
+}
+.btn-dash {
+    background-color: #2FBF71 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    color:white !important;
+    font-size: 1rem !important;      
+}
+
+.btn-dash:hover {
+    /* background-color:  #27A862 !important;
+    border-color: #27A862 !important;
+    box-shadow:0px 0px 2px 2px #2FBF71;
+    /* transition: 0.9s; */
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    
+}
+
+.btn-success:hover {
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+}
+
+input {
+    border:none !important; 
+}
+
+.badge-dash {
+    
+    border-radius: 10px !important;
+    border: none !important;
+    color:black !important;    
+    font-weight: bolder;
+    font-size: 1rem;
+    padding: 6px 6px 6px 6px;
+}
+
+.heading-dash {
+    background-color: #27A862 !important;
+    color: white !important;
+    border-radius: 4px !important;
+}
+
+
+.heading-dash:hover {
+    transition: 0.9s !important;
+    font-weight: 700 !important;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+    letter-spacing: 3px;
+
+}
+/* delete.php */
+
+.delete-card {
+    background-color: #2FBF71 !important;
+    align-items: center !important;
+    color: white !important;
+    
+}
+
+.delete-card:hover{
+    letter-spacing: 1px !important;
+    transition: 0.9s !important;
+}

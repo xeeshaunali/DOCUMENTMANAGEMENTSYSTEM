@@ -97,7 +97,7 @@ ob_end_flush(); // Flush output buffering
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center text-primary shadow rounded mt-1" data-aos="fade-down">
-                <h4 class="fw-bold text-success">District & Sessions Court Jamshorsdsdo</h4>
+                <h4 class="fw-bold text-success">District & Sessions Court Malir Karachi</h4>
                 <h5 class="text-success">|| Document Management System || </h5>
             </div>
         </div>
@@ -107,7 +107,7 @@ ob_end_flush(); // Flush output buffering
         <div class="row justify-content-center mt-4 mb-4">
             <div class="col-12 col-md-5 col-lg-3 login-card shadow rounded p-3" data-aos="zoom-in">
                 <div class="intro-text" data-aos="fade-right">
-                    Welcome to the Document Management System, a secure platform for managing court  Digital / Scanned || Documents  District & Sessions Court Jamshoro. Log in to access case records and administrative tools.
+                    Welcome to the Document Management System, a secure platform for managing court  Digital / Scanned || Documents  District & Sessions Court Malir. Log in to access case records and administrative tools.
                 </div>
                 <form action="login.php" method="POST" class="form">
                     <div class="row g-3 mb-2">

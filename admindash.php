@@ -239,9 +239,13 @@ include 'header.php';
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="admindash.css"> -->
+<!-- <link rel="stylesheet" href="style.css"> -->
+<!-- <link rel="stylesheet" href="styleNav.css"> -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 body { background: #f0f2f5; font-family: "Segoe UI", sans-serif; }
 .navbar-custom { background: linear-gradient(135deg,#198754,#0d6efd); }
@@ -255,6 +259,72 @@ body { background: #f0f2f5; font-family: "Segoe UI", sans-serif; }
 .preview-img { max-width:100%; max-height:400px; object-fit:contain; }
 a.card-link { text-decoration:none; color:inherit; }
 .alert-area { position: fixed; top: 20px; right: 20px; z-index: 9999; width: auto; }
+
+* {
+    font-family: "Inter", "Roboto", "Open Sans", sans-serif !important;
+
+}
+.btn-dash {
+    background-color: #2FBF71 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    color:white !important;
+    font-size: 1rem !important;      
+}
+
+.btn-dash:hover {
+    /* background-color:  #27A862 !important;
+    border-color: #27A862 !important;
+    box-shadow:0px 0px 2px 2px #2FBF71;
+    /* transition: 0.9s; */
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    
+}
+
+.btn-success:hover {
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+}
+
+input {
+    border:none !important; 
+}
+
+.badge-dash {
+    
+    border-radius: 10px !important;
+    border: none !important;
+    color:black !important;    
+    font-weight: bolder;
+    font-size: 1rem;
+    padding: 6px 6px 6px 6px;
+}
+
+.heading-dash {
+    background-color: #27A862 !important;
+    color: white !important;
+    border-radius: 4px !important;
+}
+
+/* delete.php */
+
+.delete-card {
+    background-color: #2FBF71 !important;
+    align-items: center !important;
+    color: white !important;
+    
+}
+
+.delete-card:hover{
+    letter-spacing: 1px !important;
+    transition: 0.9s !important;
+}
 </style>
 </head>
 <body>
@@ -267,20 +337,20 @@ a.card-link { text-decoration:none; color:inherit; }
 <div class="container">
   <!-- Action Buttons -->
   <div class="row mb-3">
-      <div class="col-md-3 col-6 mb-2"><a href="addrecord.php" class="btn btn-success w-100">Add Record</a></div>
-      <div class="col-md-3 col-6 mb-2"><a href="editrecord.php" class="btn btn-warning w-100" style="font: italic bold 16px georgia" >Edit Records </a></div>
-      <div class="col-md-3 col-6 mb-2"><a href="delete.php" class="btn btn-danger w-100">Print || Delete </a></div>
-      <div class="col-md-3 col-6 mb-2"><a href="search.php" class="btn btn-primary w-100">Search Records</a></div>
-      <div class="col-md-12 col-6 mb-2"><a href="upload_existing_document.php" class="btn btn-primary w-100">Upload Existing Record Document</a></div>
+      <div class="col-md-3 col-6 mb-2 "><a href="addrecord.php" class="btn btn-success w-100 btn-dash">Add Record</a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="editrecord.php" class="btn btn-warning w-100 btn-dash" >Edit Records </a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="delete.php" class="btn btn-danger w-100 btn-dash">Print || Delete </a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="search.php" class="btn btn-primary w-100 btn-dash">Search Records</a></div>
+      <div class="col-md-12 col-12 mb-2"><a href="upload_existing_document.php" class="btn btn-primary w-100 btn-dash">Upload Existing Record Document</a></div>
   </div>
 
   <!-- Management Links -->
   <div class="row mb-4">
-      <div class="col-md-3 col-6 mb-2"><a href="manage_courts.php" class="btn btn-info w-100 text-white">Add Courts</a></div>
-      <div class="col-md-3 col-6 mb-2"><a href="status.php" class="btn btn-info w-100 text-white">Case Status</a></div>
-      <div class="col-md-3 col-6 mb-2"><a href="manage_categories.php" class="btn btn-info w-100 text-white">Case Categories</a></div>
-      <div class="col-md-3 col-6 mb-2"><a href="set_pin.php" class="btn btn-warning w-100 text-white">Set User PIN</a></div>
-      <div class="col-md-12 col-6 mb-2 text-center"><a href="access_logs.php" class="btn btn-info w-100 text-white">View Access Logs</a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="manage_courts.php" class="btn btn-info w-100 text-white btn-dash">Add Courts</a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="status.php" class="btn btn-info w-100 text-white btn-dash">Case Status</a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="manage_categories.php" class="btn btn-info w-100 text-white btn-dash">Case Categories</a></div>
+      <div class="col-md-3 col-6 mb-2"><a href="set_pin.php" class="btn btn-warning w-100 text-white btn-dash">Set User PIN</a></div>
+      <div class="col-md-12 col-12 mb-2 text-center"><a href="access_logs.php" class="btn btn-info w-100 text-white btn-dash">View Access Logs</a></div>
   </div>
 
   <!-- Dashboard Cards -->
@@ -333,24 +403,31 @@ a.card-link { text-decoration:none; color:inherit; }
   <!-- Court-wise Cases Overview Table -->
   <div class="card shadow-sm mb-4">
     <div class="card-body">
-      <h5 class="card-title text-success"><i class="bi bi-building me-2"></i>Court-wise Cases Overview</h5>
+      <h5 class="card-title text-success text-center"><i class="bi bi-building me-2"></i>Court-wise Cases Overview</h5>
       <div class="table-responsive">
         <table class="table table-striped table-hover align-middle">
-          <thead class="table-primary">
+          <thead class="table-primary ">
             <tr>
-              <th>#</th>
-              <th>Court Name</th>
-              <th class="text-center">Number of Cases Updated</th>
+              <th class="heading-dash">#</th>
+              <th class="heading-dash">Court Name</th>
+              <th class="text-center heading-dash">Number of Cases Updated</th>
             </tr>
           </thead>
           <tbody>
+
             <?php if (empty($court_case_counts)): ?>
+
               <tr><td colspan="3" class="text-center text-muted">No case records found.</td></tr>
+
             <?php else: $i = 1; foreach ($court_case_counts as $court): ?>
+
               <tr>
-                <td><?php echo $i++; ?></td>
+
+                <td><?php echo $i++; ?></td>                
                 <td><strong><?php echo htmlspecialchars($court['court_name'] ?: 'Not Specified'); ?></strong></td>
-                <td class="text-center"><span class="badge bg-success fs-6"><?php echo (int)$court['case_count']; ?></span></td>
+                <td class="text-center"><span class="badge-dash">
+                  <?php echo (int)$court['case_count']; ?>
+                </span></td>
               </tr>
             <?php endforeach; endif; ?>
           </tbody>
@@ -365,12 +442,12 @@ a.card-link { text-decoration:none; color:inherit; }
     <div class="card-body">
       <h5 class="card-title text-success"><i class="bi bi-file-earmark-arrow-up me-2"></i>Court-wise Document Statistics</h5>
       <div class="table-responsive">
-        <table class="table table-striped table-hover align-middle">
+        <table class="table table-striped table-hover align-middle text-center">
           <thead class="table-info">
             <tr>
-              <th>#</th>
-              <th>Court Name</th>
-              <th class="text-center">Number of Documents Uploaded</th>
+              <th class="heading-dash">#</th>
+              <th class="heading-dash">Court Name</th>
+              <th class="text-center heading-dash ">Number of Documents Uploaded</th>
             </tr>
           </thead>
           <tbody>
@@ -380,7 +457,7 @@ a.card-link { text-decoration:none; color:inherit; }
               <tr>
                 <td><?php echo $i++; ?></td>
                 <td><strong><?php echo htmlspecialchars($stat['court_name'] ?: 'Not Specified'); ?></strong></td>
-                <td class="text-center"><span class="badge bg-primary fs-6"><?php echo (int)$stat['doc_count']; ?></span></td>
+                <td class="text-center"><span class="badge-dash"><?php echo (int)$stat['doc_count']; ?></span></td>
               </tr>
             <?php endforeach; endif; ?>
           </tbody>
@@ -392,11 +469,14 @@ a.card-link { text-decoration:none; color:inherit; }
   <!-- Document Types Breakdown -->
   <div class="card shadow-sm mb-4 col-6">
     <div class="card-body">
-      <h5 class="card-title text-success">Document Types & Usage</h5>
+      <h5 class="card-title text-success">Document Types & Uploads</h5>
       <div class="table-responsive">
-        <table class="table table-sm table-striped mb-0">
-          <thead class="table-light">
-            <tr><th>#</th><th>Document Type</th><th>Documents Uploaded</th></tr>
+        <table class="table table-sm table-striped mb-0 text-center">
+          <thead class="table-light ">
+            <tr>
+              <th  class="heading-dash ">#</th>
+              <th  class="heading-dash">Document Type</th>
+              <th  class="heading-dash">Documents Uploaded</th></tr>
           </thead>
           <tbody>
             <?php if (empty($doc_types_with_count)): ?>
@@ -405,7 +485,7 @@ a.card-link { text-decoration:none; color:inherit; }
               <tr>
                 <td><?php echo (int)$dt['id']; ?></td>
                 <td><strong><?php echo htmlspecialchars($dt['type_name']); ?></strong></td>
-                <td><span class="badge bg-primary"><?php echo (int)$dt['doc_count']; ?></span></td>
+                <td><span class="badge-dash text-center"><?php echo (int)$dt['doc_count']; ?></span></td>
               </tr>
             <?php endforeach; endif; ?>
           </tbody>
@@ -425,12 +505,12 @@ a.card-link { text-decoration:none; color:inherit; }
           <input type="text" name="type_name" id="type_name" class="form-control" placeholder="New document type (e.g. Judgment)" required>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-primary w-100" type="submit">Add Type</button>
+          <button class="btn btn-primary w-100 btn-dash" type="submit">Add Type</button>
         </div>
       </form>
       <hr>
       <div class="table-responsive table-fixed">
-        <table class="table table-sm table-striped mb-0">
+        <table class="table table-sm table-striped mb-0 text-center">
           <thead><tr><th>#</th><th>Type</th><th>Added</th><th>Action</th></tr></thead>
           <tbody id="docTypesList">
             <?php if (count($document_types) === 0): ?>
@@ -439,9 +519,9 @@ a.card-link { text-decoration:none; color:inherit; }
               <tr id="type-row-<?php echo (int)$dt['id']; ?>">
                 <td><?php echo (int)$dt['id']; ?></td>
                 <td class="type-name"><?php echo htmlspecialchars($dt['type_name']); ?></td>
-                <td>-</td>
+                <td>Yes</td>
                 <td>
-                  <button class="btn btn-sm btn-outline-secondary" onclick="openEditModal(<?php echo (int)$dt['id']; ?>, '<?php echo addslashes(htmlspecialchars($dt['type_name'])); ?>')">Edit</button>
+                  <button class="btn btn-sm btn-success " onclick="openEditModal(<?php echo (int)$dt['id']; ?>, '<?php echo addslashes(htmlspecialchars($dt['type_name'])); ?>')">Edit</button>
                   <button class="btn btn-sm btn-outline-danger" onclick="deleteDocType(<?php echo (int)$dt['id']; ?>)">Delete</button>
                 </td>
               </tr>
@@ -457,9 +537,9 @@ a.card-link { text-decoration:none; color:inherit; }
     <div class="card-body">
       <h5 class="card-title text-success">Recent Document Accesses</h5>
       <div class="table-responsive table-fixed">
-        <table class="table table-sm table-striped mb-0">
+        <table class="table table-sm table-striped mb-0 text-center responsive">
           <thead>
-            <tr><th>#</th><th>Doc ID</th><th>User</th><th>Action</th><th>Filename</th><th>Accessed At</th><th>IP</th></tr>
+            <tr ><th>#</th><th>Doc ID</th><th>User</th><th>Action</th><th>Filename</th><th>Accessed At</th><th>IP</th></tr>
           </thead>
           <tbody>
             <?php if (count($recent_logs) === 0): ?>
@@ -469,7 +549,7 @@ a.card-link { text-decoration:none; color:inherit; }
                 <td><?php echo (int)$log['id']; ?></td>
                 <td><?php echo (int)$log['doc_id']; ?></td>
                 <td><?php echo htmlspecialchars($log['username']); ?></td>
-                <td><span class="badge bg-<?php echo $log['action'] === 'view' ? 'primary' : 'success'; ?>"><?php echo ucfirst($log['action']); ?></span></td>
+                <td><span class="badge-dash<?php echo $log['action'] === 'view' ? 'primary' : 'success'; ?>"><?php echo ucfirst($log['action']); ?></span></td>
                 <td><?php echo htmlspecialchars($log['file_name']); ?></td>
                 <td><?php echo htmlspecialchars($log['accessed_at']); ?></td>
                 <td><?php echo htmlspecialchars($log['ip_address'] ?? 'N/A'); ?></td>
@@ -508,8 +588,94 @@ a.card-link { text-decoration:none; color:inherit; }
     </div>
   </div>
 </div>
+<div class="modal fade" id="editDocTypeModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Document Type</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editDocTypeForm">
+          <input type="hidden" id="edit_id" name="id">
+          <div class="mb-3">
+            <label for="edit_type_name" class="form-label">Type Name</label>
+            <input type="text" class="form-control" id="edit_type_name" name="type_name" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php include 'footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function deleteDocType(id) {
+    if (confirm("Are you sure you want to delete this document type?")) {
+        $.ajax({
+            type: "POST",
+            url: "admindash.php",
+            data: { action: "delete_doc_type", id: id },
+            success: function(response) {
+                if (response === "OK") {
+                    $("#type-row-" + id).remove();
+                } else {
+                    alert(response);
+                }
+            },
+            error: function() {
+                alert("Error deleting document type.");
+            }
+        });
+    }
+}
+
+function openEditModal(id, name) {
+    $("#edit_id").val(id);
+    $("#edit_type_name").val(name);
+    $("#editDocTypeModal").modal('show');
+}
+
+$("#editDocTypeForm").submit(function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize() + "&action=edit_doc_type";
+    $.ajax({
+        type: "POST",
+        url: "admindash.php",
+        data: formData,
+        success: function(response) {
+            if (response === "OK") {
+                location.reload();
+            } else {
+                alert(response);
+            }
+        },
+        error: function() {
+            alert("Error updating document type.");
+        }
+    });
+});
+
+$("#addDocTypeForm").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "admindash.php",
+        data: $(this).serialize(),
+        success: function(response) {
+            if (response === "OK") {
+                location.reload();
+            } else {
+                alert(response);
+            }
+        },
+        error: function() {
+            alert("Error adding document type.");
+        }
+    });
+});
+</script>
 </body>
 </html>

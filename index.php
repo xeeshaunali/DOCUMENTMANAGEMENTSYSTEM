@@ -14,7 +14,7 @@
     <div class="container">        
         <div class="row">
             <div class="col-md-12 text-center text-primary shadow rounded mt-1">
-                <h4 class="fw-bold text-success" >District & Sessions Court Jamshoro</h4>
+                <h4 class="fw-bold text-success" >District & Sessions Court Malir</h4>
                 <h5 class="text-success">|| Document Management System  || </h5>               
             </div>
         </div>

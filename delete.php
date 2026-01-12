@@ -93,6 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
     <title>Delete Record | Court DMS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="admindash.css">
     <style>
         body { 
             background: linear-gradient(135deg, #f0f7f4 0%, #e6f3ed 100%); 
@@ -151,9 +152,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-10 col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Delete Court Record</h3>
+            <div class="card text-center">
+                <div class="delete-card">
+                    <h3 class="">Delete Court Record</h3>
                     <p class="mb-0 opacity-90">Admin Only • Permanent Action • Cannot Be Undone</p>
                 </div>
                 <div class="card-body p-5">
@@ -176,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
                                        placeholder="Enter Record ID" required autofocus>
                             </div>
                             <div class="col-md-3">
-                                <button type="submit" name="search" class="btn btn-primary btn-lg w-100">
+                                <button type="submit" name="search" class="btn btn-success btn-sm ">
                                     Search Record
                                 </button>
                             </div>
@@ -232,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
                     <?php endif; ?>
 
                     <div class="text-center mt-4">
-                        <a href="admindash.php" class="btn btn-secondary btn-lg px-5">
+                        <a href="admindash.php" class="btn btn-success btn-sm px-5">
                             Back to Dashboard
                         </a>
                     </div>

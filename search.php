@@ -44,13 +44,74 @@ include 'header.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="aos.css">
+    <link rel="stylesheet" href="admindash.css">
     <script src="aos.js"></script>
     <style>
         body {
             background: linear-gradient(135deg, #f0f7f4 0%, #e6f3ed 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', Roboto, Geneva, Verdana, sans-serif;
             min-height: 100vh;
         }
+
+        
+.btn-dash {
+    background-color: #2FBF71 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    color:white !important;
+    font-size: 1rem !important;      
+}
+
+.btn-dash:hover {
+    /* background-color:  #27A862 !important;
+    border-color: #27A862 !important;
+    box-shadow:0px 0px 2px 2px #2FBF71;
+    /* transition: 0.9s; */
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    
+}
+
+.btn-success:hover {
+    transition: 0.9s;
+    font-weight: 700;
+    background-color: rgb(149, 245, 181) !important;
+    color: black !important;
+    border: none !important;
+}
+
+input {
+    border:none !important; 
+    box-shadow: 0px 1px 0px 1px #27A862 !important;
+}
+
+select {
+     border:none !important; 
+    box-shadow: 0px 1px 0px 1px #27A862 !important;
+}
+
+.badge-dash {
+    
+    border-radius: 10px !important;
+    border: none !important;
+    color:black !important;    
+    font-weight: bolder;
+    font-size: 1rem;
+    padding: 6px 6px 6px 6px;
+}
+
+label {
+    color:#27A862 !important;
+}
+
+.heading-dash {
+    background-color: #27A862 !important;
+    color: white !important;
+    border-radius: 4px !important;
+}
+
         .search-card {
             background: white;
             border-radius: 1.2rem;
@@ -102,22 +163,23 @@ include 'header.php';
             cursor: not-allowed;
         }
         .quick-search-box {
-            background: linear-gradient(135deg, #0d6efd, #198754);
+            background: #089c57ff;
             color: white;
-            border-radius: 1.2rem;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            margin-bottom: 2.5rem;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+            
         }
-        .quick-search-box h3 {
-            font-weight: 700;
+        .quick-search-box h6 {
+            font-weight: 500;
             margin-bottom: 1rem;
         }
         .quick-search-box .form-control {
             border: 2px solid rgba(255,255,255,0.4);
             background: rgba(255,255,255,0.1);
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
             padding: 0.8rem 1.2rem;
         }
         .quick-search-box .form-control::placeholder {
@@ -125,25 +187,26 @@ include 'header.php';
         }
         .quick-search-box .form-control:focus {
             border-color: white;
-            background: rgba(255,255,255,0.2);
+            background: rgba(9, 31, 224, 0.2);
             color: white;
             box-shadow: 0 0 0 0.3rem rgba(255,255,255,0.3);
         }
         .quick-search-box .btn {
             border-radius: 0.8rem;
             padding: 0.8rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 700;
+            color: green;
         }
     </style>
 </head>
 <body>
-<div class="container py-5">
+<div class="container py-2">
 
     <!-- NEW: Quick Search by Case ID -->
-    <div class="quick-search-box text-center" data-aos="fade-down">
-        <h3><i class="bi bi-search me-2"></i>Quick Search by Case ID</h3>
-        <p class="lead mb-4">Enter the unique Case ID (record number) to instantly find a specific case</p>
+    <div class="quick-search-box text-center h-50" data-aos="fade-down">
+        <h5><i class="bi bi-search me-2"></i>Quick Search by Case ID</h5>
+        <p class="lead mb-6" style="font-size:1.2rem;">Enter the unique Case ID (record number) to instantly find a specific case</p>
         <form action="searchResult.php" method="GET" class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
             <div class="col-lg-4 col-md-6 col-12">
                 <input type="number" 
@@ -164,7 +227,7 @@ include 'header.php';
 
     <!-- Original Advanced Search Section -->
     <div class="text-center mb-5" data-aos="fade-down">
-        <h2 class="page-title text-success">
+        <h2 class="page-title text-success" style="font-size:16px; font-weight:bold;">
             Advanced Case Search
         </h2>
         <p class="text-muted lead">Search through all court records with powerful filters</p>
@@ -296,10 +359,10 @@ include 'header.php';
                 </div>
 
                 <div class="text-center mt-5">
-                    <button type="submit" class="btn btn-success btn-search text-white">
+                    <button type="submit" class="btn btn-dash text-white">
                         Search Records
                     </button>
-                    <a href="admindash.php" class="btn btn-outline-secondary btn-lg ms-3">
+                    <a href="admindash.php" class="btn btn-outline-secondary btn-sm ms-3">
                         Back to Dashboard
                     </a>
                 </div>
