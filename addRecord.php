@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Proceed with normal insertion (your original logic, just safer)
+    // Get form values
     $courtname        = $submitted_court;
     $casecateg        = trim($_POST['casecateg'] ?? '');
     $caseno           = trim($_POST['caseno'] ?? '');
@@ -60,9 +60,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $created_by       = $user['username'];
     $created_court    = $courtname;
 
-    // Validation
+    // Validation - required fields
     if (empty($courtname) || empty($casecateg) || empty($caseno) || empty($year)) {
         echo "<script>alert('Please fill all required fields (Court, Category, Case No, Year).'); history.back();</script>";
+        exit();
+    }
+
+    // === NEW: Check if CFMS-DC Case Code already exists ===
+    if (!empty($cfms_dc_casecode)) {
+        $checkStmt = $con->prepare("SELECT id FROM ctccc WHERE cfms_dc_casecode = ? LIMIT 1");
+        $checkStmt->bind_param("s", $cfms_dc_casecode);
+        $checkStmt->execute();
+        $checkResult = $checkStmt->get_result();
+        $checkStmt->close();
+
+        if ($checkResult->num_rows > 0) {
+            echo "<script>
+                alert('Error: A case with this CFMS-DC Case Code already exists!');
+                history.back();
+            </script>";
+            exit();
+        }
+    } else {
+        // If you want to force it to be filled (as per your placeholder "Mandatory")
+        echo "<script>alert('CFMS-DC Case Code is required!'); history.back();</script>";
         exit();
     }
 
@@ -99,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $uploadSuccess = true;
 
-    // === FILE UPLOAD (same as yours, unchanged except safety) ===
+    // === FILE UPLOAD (unchanged except safety) ===
     if ($hasFile && $document_type_id > 0) {
         $stmt2 = $con->prepare("SELECT type_name FROM document_types WHERE id = ?");
         $stmt2->bind_param("i", $document_type_id);
@@ -178,12 +199,12 @@ $document_types = $con->query("SELECT id, type_name FROM document_types ORDER BY
 include 'header.php';
 ?>
 
+<!-- Your existing styles remain unchanged -->
 <style>
 label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0.1rem; }
 
 * {
     font-family: "Inter", "Roboto", "Open Sans", sans-serif !important;
-
 }
 .btn-dash {
     background-color: #2FBF71 !important;
@@ -194,15 +215,10 @@ label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0
 }
 
 .btn-dash:hover {
-    /* background-color:  #27A862 !important;
-    border-color: #27A862 !important;
-    box-shadow:0px 0px 2px 2px #2FBF71;
-    /* transition: 0.9s; */
     transition: 0.9s;
     font-weight: 700;
     background-color: rgb(149, 245, 181) !important;
     color: black !important;
-    
 }
 
 .btn-success:hover {
@@ -212,7 +228,6 @@ label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0
     color: black !important;
     border: none !important;
 }
-
 </style>
 
 <div class="container-fluid">
@@ -238,7 +253,6 @@ label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0
                     <?php endif; ?>
                 </div>
 
-                <!-- Rest of your form (unchanged) -->
                 <div class="col-md-6">
                     <label>Case / Appln Category <span class="text-danger">*</span></label>
                     <select class="form-select text-center shadow rounded" name="casecateg" required>
@@ -284,7 +298,13 @@ label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0
                     </select>
                 </div>
 
-                <div class="col-md-6"><label>CFMS-DC Case Code</label><input type="text" class="form-control text-center shadow rounded" name="cfms_dc_casecode" placeholder="Mandatory" required></div>
+                <!-- CFMS-DC Case Code field (now checked for uniqueness) -->
+                <div class="col-md-6">
+                    <label>CFMS-DC Case Code <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control text-center shadow rounded" 
+                           name="cfms_dc_casecode" placeholder="Enter unique CFMS-DC code" required>
+                </div>
+
                 <div class="col-md-6"><label>Remarks</label><input type="text" class="form-control text-center shadow rounded" name="remarks"></div>
 
                 <div class="col-md-6">
@@ -303,7 +323,7 @@ label { color: green; font-weight: bold; word-spacing: 0.5rem; letter-spacing: 0
                 </div>
 
                 <div class="col-12 text-center mt-2 mb-1">
-                    <button type="submit" class="btn btn-dash  w-50">Save Record & Upload File</button>
+                    <button type="submit" class="btn btn-dash w-50">Save Record & Upload File</button>
                 </div>
             </form>
         </div>
